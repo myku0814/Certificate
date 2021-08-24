@@ -1,0 +1,190 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuTech</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="main">
+        <form action="#" class="form" id="genCert">
+            <div class="u-margin-bottom">
+                <h2 class="heading">
+                    課程證書
+                </h2>
+            </div>
+
+            <div class="form__group">
+                <input type="text" class="form__input--txt" placeholder="請輸入您的名字" id="name" required>
+                <label for="name" class="form__label--txt">名字</label>
+            </div>
+
+            <div class="form__group">
+                <input type="date" class="form__input--txt" id="bday" min="1911-01-01" max="2121-12-31" required>
+                <label for="bday" class="form__label--txt">生日</label>
+            </div>
+
+            <div class="form__group">
+                <input type="file" class="form__input--file" placeholder="請上傳您的照片" id="selfie" required>
+                <img class="form__img">
+                <label for="selfie" class="form__label--file">自拍照</label>
+            </div>
+
+            <div class="form__group">
+                <input type="file" class="form__input--file" placeholder="請上傳您的照片" id="heartRate" required>
+                <img class="form__img">
+                <label for="heartRate" class="form__label--file">heartRate</label>
+            </div>
+
+            <div class="form__group">
+                <input type="file" class="form__input--file" placeholder="請上傳您的照片" id="breatheRate" required>
+                <img class="form__img">
+                <label for="breatheRate" class="form__label--file">breatheRate</label>
+            </div>
+            
+
+            <div class="form__group">
+                <table class="form__table">
+                    <thead class="form__head">
+                    <tr>
+                        <th>X</th>
+                        <th>課前5分鐘</th>
+                        <th>課後5分鐘</th>
+                    </tr>
+                    </thead>
+                    <tbody class="form__body">
+                    <tr class="form__tr">
+                        <td>心跳速率</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="a" id="a" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="b" id="b" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+
+                    <tr class="form__tr">
+                        <td>Total Power(TP)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="c" id="c" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="d" id="d" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Very Low Power(VLP)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="e" id="e" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="f" id="f" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Low Power(LP)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="g" id="g" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="h" id="h" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>High Power(HP)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="i" id="i" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="j" id="j" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Normalized Low Power(nLP)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="k" id="k" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="l" id="l" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Normalized High Power(nHP)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="m" id="m" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="n" id="n" required>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Low High Power Ratio(LHR)</td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="o" id="o" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form__group">
+                                <input type="text" class="form__input--td" placeholder="p" id="p" required>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form__group">
+                <input type="text" class="form__input--txt" placeholder="密碼" id="passwd" required>
+                <label for="passwd" class="form__label--txt">密碼</label>
+            </div>
+
+            <div class="form__group">
+                <button type="submit" class="btn">產生證書</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <div id="second">
+        <!-- <section id="certificate1" class="certificate">
+            <img src="./img/pg1.jpg" alt="Certificate1" class="certificate__image--bg">
+        </section>
+        <section id="certificate2" class="certificate">
+            <img src="./img/pg2.jpg" alt="Certificate2" class="certificate__image--bg">
+        </section> -->
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

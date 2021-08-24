@@ -1,0 +1,79 @@
+:root {
+    --color-primary: #eb2f64;
+    --color-primary-light: #FF3366;
+    --color-primary-dark: #BA265D;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+    --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+    --btn-txt-color: rgb(15, 137, 153);
+    --td-color: rgb(96, 218, 235);
+
+    --line: 1px solid var(--color-grey-light-4);
+}
+
+.u-center-text { text-align: center !important; }
+.u-margin-bottom { margin-bottom: 3rem !important; }
+
+$bp-largest: 75em; // 1200px/16px
+$bp-large: 68.75em; // 1100px
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
+
+$A4-width: 794px;
+$A4-height: 1123px;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%;
+    }
+    @media only screen and (max-width: $bp-small) {
+        font-size: 30%;
+    }
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Microsoft JhengHei', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-grey-dark-2);
+    background-image: linear-gradient(
+        to right bottom,
+        var(--color-grey-light-1),
+        var(--color-grey-light-3)
+    );
+    background-repeat: no-repeat;
+}
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin noBreak {
+    break-inside: avoid;
+}
