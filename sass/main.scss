@@ -88,19 +88,19 @@
             z-index: 10;
             position: absolute;
             top: 989px;
-            left: 286px;
+            left: 326px;
         }
         &--mm {
             z-index: 10;
             position: absolute;
             top: 989px;
-            left: 381px;
+            left: 399px;
         }
         &--dd {
             z-index: 10;
             position: absolute;
             top: 989px;
-            left: 457px;
+            left: 451px;
         }
 
         &--bday {
@@ -158,11 +158,12 @@
         display: block;
         width: 150px;
         border-radius: 30%;
-
+        // border:  1px solid red;
         z-index: 10;
         position: absolute;
-        top: 128px;
-        left: 113px;
+        top: 239px;
+        left: 196px;
+        transform: translate(-50%, -50%);
     }
 
     &__heartRate {
@@ -172,7 +173,7 @@
 
         z-index: 10;
         position: absolute;
-        top: 521px;
+        top: 583px;
         left: 79px;
     }
 
@@ -183,7 +184,7 @@
 
         z-index: 10;
         position: absolute;
-        top: 770px;
+        top: 812px;
         left: 79px;
     }
 }

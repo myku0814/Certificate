@@ -247,17 +247,17 @@ body {
     z-index: 10;
     position: absolute;
     top: 989px;
-    left: 286px; }
+    left: 326px; }
   .certificate__date--mm {
     z-index: 10;
     position: absolute;
     top: 989px;
-    left: 381px; }
+    left: 399px; }
   .certificate__date--dd {
     z-index: 10;
     position: absolute;
     top: 989px;
-    left: 457px; }
+    left: 451px; }
   .certificate__date--bday {
     z-index: 10;
     position: absolute;
@@ -297,15 +297,16 @@ body {
     border-radius: 30%;
     z-index: 10;
     position: absolute;
-    top: 128px;
-    left: 113px; }
+    top: 239px;
+    left: 196px;
+    transform: translate(-50%, -50%); }
   .certificate__heartRate {
     display: block;
     width: 636px;
     height: 183px;
     z-index: 10;
     position: absolute;
-    top: 521px;
+    top: 583px;
     left: 79px; }
   .certificate__breatheRate {
     display: block;
@@ -313,5 +314,5 @@ body {
     height: 183px;
     z-index: 10;
     position: absolute;
-    top: 770px;
+    top: 812px;
     left: 79px; }
