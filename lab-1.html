@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
+    <title>Yutech | Lab-1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./lib/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="./css/style1.css"/>
+
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding-top: 40px;
+        }
+
+        footer {
+            padding: 10px !important;
+        }
+
+        #genCert > div {
+            padding: 1rem;
+        }
+
+        .brand-logo {
+            height: 100%;
+            display: flex !important;
+        }
+        .brand-logo > img {
+            height: 100%;
+            width: auto;
+            padding: 0.5rem;
+        }
+        
+        table input:not(:placeholder-shown) {
+            background-color: lightyellow !important;
+        }
+
+        table input {
+            color: green;
+            border: none !important;
+        }
+        
+        table input:focus {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        table input:not(.browser-default) {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        @media print {
+            #main  *, #options-burger *, .navbar-fixed *, .date-picker *, footer * {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper teal darken-1 val">
+                <a href="#!" class="brand-logo">
+                    <img src="./img/favicon.png" alt="YuTech Logo"  class="hide-on-med-and-down">
+                    <span>Yutech</span>
+                </a>
+                <a href="#" data-target="options-burger" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="options" class="right hide-on-med-and-down">
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <ul id="options-burger" class="sidenav blue-grey darken-4">
+
+    </ul>
+
+    <main class="container" id="main">
+        <div id="form" class="row">
+            <div class="col s12 center-align teal-text text-darken-4">
+                <h4>試穿戴實驗課程(一)證書</h4>
+            </div>
+            <form class="card-panel col s12" id="genCert">
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">title</i>
+                        <input placeholder="王小明" type="text" class="validate" required id="_a">
+                        <label for="_a">姓名</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">date_range</i>
+                        <input type="text" class="datepicker no-autoinit" required id="_b">
+                        <label for="_b">生日</label>
+                    </div>
+                    
+                    <div class="file-field input-field col s12">
+                        <div class="btn">
+                            <span>自拍照</span>
+                            <input type="file"  required id="_c">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="上傳一個檔案">
+                            <img id="_c_pic">
+                        </div>
+                    </div>
+                    
+                    <div class="file-field input-field col s12 m6">
+                        <div class="btn">
+                            <span>心電圖</span>
+                            <input type="file" required id="_d">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="上傳一個檔案">
+                            <img id="_d_pic">
+                        </div>
+                    </div>
+
+                    <div class="file-field input-field col s12 m6">
+                        <div class="btn">
+                            <span>心律變異率</span>
+                            <input type="file" required id="_e">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="上傳一個檔案">
+                            <img id="_e_pic">
+                        </div>
+                    </div>
+
+                    <table class="highlight" id="table">
+                        <thead>
+                            <tr>
+                                <th>紀錄指標</th>
+                                <th>課前5分鐘</th>
+                                <th>課後5分鐘</th>
+                            </tr>
+                        </thead>
+                
+                        <tbody>
+                            <tr>
+                                <td>心跳速率</td>
+                                <td><input placeholder="xxx" id="a" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="b" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>Total Power(TP)</td>
+                                <td><input placeholder="xxx" id="c" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="d" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>Very Low Power(VLP)</td>
+                                <td><input placeholder="xxx" id="e" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="f" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>Low Power(LP)</td>
+                                <td><input placeholder="xxx" id="g" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="h" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>High Power(HP)</td>
+                                <td><input placeholder="xxx" id="i" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="j" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>Normalized Low Power(nLP)</td>
+                                <td><input placeholder="xxx" id="k" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="l" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>Normalized High Power(nHP)</td>
+                                <td><input placeholder="xxx" id="m" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="n" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>Low High Power Ratio(LHR)</td>
+                                <td><input placeholder="xxx" id="o" type="text" class="validate" required></td>
+                                <td><input placeholder="xxx" id="p" type="text" class="validate" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input placeholder="xxx" type="text" class="validate" required id="_">
+                        <label for="pwd">證書金鑰</label>
+                    </div>
+                    
+                    <button class="btn waves-effect right" type="submit">
+                        產生證書
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        
+    </main>
+
+    <div id="second">
+
+    </div>
+
+    <footer class="page-footer teal darken-1">
+        <span class="center-align">&copy; Copyright 2022 Yutech Corp. by myku. All right reserved.</span>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+        // for materialize
+        M.AutoInit();
+    </script>
+
+
+
+    <script type="text/javascript">
+        /**
+         * @param  {string}          tagName   tag name
+         * @param  {string|string[]} classList class list
+         * @param  {string}          innerHtml innerHTML
+         * @param  {JsonObject}      attrs     attr-*
+         * @return {HTMLElement}
+         */
+        const simpleCreateHTML = (tagName, classList, innerHTML, attrs) => {
+            const check = x => x!==void(0) && x!==null;
+
+            if(!check(tagName)) throw Error('No tag name...');
+
+            const node = document.createElement(tagName);
+
+            if(check(classList)) node.classList.add(...classList);
+            
+            if(check(innerHTML)) node.innerHTML = innerHTML;
+            
+            if(check(attrs)) Object.keys(attrs).forEach(attr => node.setAttribute(attr, attrs[attr]));
+            
+            return node;
+        };
+
+        class Controller {
+            constructor() {
+                this.dirty = null;
+                this.today = null;
+
+                this._ = ''; // pwd
+                this._a = ''; // name
+                this._b = ''; // birthday
+                this._c = null; // file
+                this._d = null; // file 
+                this._e = null; // file
+
+                // table
+                this.a = '';
+                this.b = '';
+                this.c = '';
+                this.d = '';
+                this.e = '';
+                this.f = '';
+                this.g = '';
+                this.h = '';
+                this.i = '';
+                this.j = '';
+                this.k = '';
+                this.l = '';
+                this.m = '';
+                this.n = '';
+                this.o = '';
+                this.p = '';
+            }
+            init(mainNode, secondNode) {
+                const self = this;
+                mainNode.classList.add('main');
+                secondNode.classList.add('second');
+
+                this.refreshCertificate();
+                this.createListener();
+
+                window.onafterprint = function() {
+                    self.refreshCertificate();
+                };
+            }
+            createListener() {
+                const self = this;
+
+                document.querySelectorAll('input[type="text"]').forEach(HTMLEle => {
+                    HTMLEle.addEventListener('input', function(evt) {
+                        if(
+                            this.id === '_'   ||
+                            this.id === '_a'  ||
+                            this.id === 'a'   ||
+                            this.id === 'b'   ||
+                            this.id === 'c'   ||
+                            this.id === 'd'   ||
+                            this.id === 'e'   ||
+                            this.id === 'f'   ||
+                            this.id === 'g'   ||
+                            this.id === 'h'   ||
+                            this.id === 'i'   ||
+                            this.id === 'j'   ||
+                            this.id === 'k'   ||
+                            this.id === 'l'   ||
+                            this.id === 'm'   ||
+                            this.id === 'n'   ||
+                            this.id === 'o'   ||
+                            this.id === 'p'    
+                        ) {
+                            self[this.id] = this.value;
+                        } else console.log(`Cannot figure out input/text of ${this.id}.`);
+                    });
+                });
+
+                document.querySelectorAll('input[type="file"]').forEach(HTMLEle => {
+                    HTMLEle.addEventListener('input', function(evt) {
+                        if (this.files && this.files[0]) {
+                            if(
+                                this.id === '_c'   ||
+                                this.id === '_d'   ||
+                                this.id === '_e'
+                            ) {
+                                self.refreshCertificate() // avoid intent print
+                                self[this.id] = URL.createObjectURL(this.files[0]);
+                                const pic = document.querySelector(`#${this.id}_pic`);
+                                const blobURL = self[this.id]; // set src to blob url
+                                pic.style = 'width: auto; height: 60px;';
+                                pic.src = blobURL;
+                                // pic.onload = () => URL.revokeObjectURL(blobURL); // no longer needed, free memory
+                            } else console.log(`Cannot figure out input/file of ${this.id}.`);
+                        }
+                    });
+                });
+
+                document.querySelectorAll('input[type="date"]').forEach(HTMLEle => {
+                    HTMLEle.addEventListener('input', function(evt) {
+                        switch(this.id) {
+                            case '_b': {
+                                console.log(this.value);
+                                self[this.id] = this.value.replace(/-/g, '/');
+                                break;
+                            }
+                            
+                        default:
+                            console.log(`Cannot figure out input/date of ${this.id}.`);
+                        }
+                            
+                        
+                    });
+                });
+
+                document.getElementById('genCert').addEventListener('submit', function(evt) {
+                    /* refresh */
+                    self.refreshCertificate();
+                    evt.preventDefault();
+
+
+                    self.today = new Date().today();
+                    
+                    /* page 1 */
+                    const certificate1 = document.getElementById('certificate1');
+                    certificate1.appendChild(simpleCreateHTML('div', ['certificate___a--1'], self._a));
+
+
+                    const today = simpleCreateHTML('div', ['certificate__date']);
+                    today.appendChild(simpleCreateHTML('div', ['certificate__date--yy'], self.today.yy));
+                    today.appendChild(simpleCreateHTML('div', ['certificate__date--mm'], self.today.mm));
+                    today.appendChild(simpleCreateHTML('div', ['certificate__date--dd'], self.today.dd));
+                    certificate1.appendChild(today);
+
+                    /* page 2 */
+                    const certificate2 = document.getElementById('certificate2');
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate___a--2'], self._a));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__date---b'], self._b));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__date--today'], `${self.today.yy}/${self.today.mm}/${self.today.dd}`));
+
+                    const _c = simpleCreateHTML('img', ['certificate___c']);
+                    _c.src = self._c;
+                    certificate2.appendChild(_c);
+
+                    const _d = simpleCreateHTML('img', ['certificate___d']);
+                    _d.src = self._d;
+                    certificate2.appendChild(_d);
+
+                    const _e = simpleCreateHTML('img', ['certificate___e']);
+                    _e.src = self._e;
+                    certificate2.appendChild(_e);
+
+
+
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--a'], `${self.a}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--b'], `${self.b}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--c'], `${self.c}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--d'], `${self.d}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--e'], `${self.e}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--f'], `${self.f}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--g'], `${self.g}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--h'], `${self.h}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--i'], `${self.i}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--j'], `${self.j}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--k'], `${self.k}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--l'], `${self.l}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--m'], `${self.m}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--n'], `${self.n}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--o'], `${self.o}/`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--p'], `${self.p}`));
+                    
+
+                    // const node = document.getElementById('table').cloneNode(true);
+                    // certificate2.appendChild(node);
+
+                    if(self._ === 'yutech') {
+                        self.dirty.destroy();
+                        window.print();
+                    } else {
+                        self.refreshCertificate();
+                        alert('密碼錯誤!!!');
+                    }
+                    
+                });
+            }
+
+
+            createCertificate(pages) {
+                return pages.map(page => {
+                    const certificate = simpleCreateHTML('section', ['certificate']);
+                    certificate.id = `certificate${page}`;
+            
+                    const certificateImageBg = simpleCreateHTML('img', ['certificate__image--bg', 'browser-default']);
+                    certificateImageBg.src=`./img/pg${page}.jpg`;
+                    certificateImageBg.alt=`Certificate${page}`;
+            
+                    certificate.appendChild(certificateImageBg);
+                    return certificate; // aware of return certificate.appendChild(certificateImageBg); will error
+                });
+                
+
+            
+            }
+            refreshCertificate() {
+                const secondNode = document.getElementById('second');
+                secondNode.innerHTML = '';
+
+                this.createCertificate([1, 2]).forEach(page => secondNode.appendChild(page));
+
+                // re-gen
+                this.dirty = M.Datepicker.init(document.querySelector(".datepicker"), {
+                    format: 'yyyy/mm/dd',
+                    onClose: function() {
+                        controller._b = this.toString();
+                    }
+                });
+            }
+        }
+
+
+        const controller = new Controller();
+        controller.init(
+            document.getElementById('main'), 
+            document.getElementById('second'), 
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Date.prototype.today = function() {
+            return {
+                yy: this.getFullYear(),
+                mm: (this.getMonth()+1 < 10)? `0${this.getMonth()+1}` : `${this.getMonth()+1}`,
+                dd: (this.getDate() < 10)? `0${this.getDate()}` : `${this.getDate()}`
+            };
+        };
+    </script>
+</body>
+</html>

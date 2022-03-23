@@ -11,13 +11,16 @@
     "compile:sass": "node-sass ./sass/main.scss ./css/style.comp.css",
     "prefix:sass": "postcss --use autoprefixer -b 'last 10 versions' ./css/style.comp.css -o ./css/style.prefix.css",
     "compress:sass": "node-sass ./css/style.prefix.css ./css/style.css --output-style='compressed'",
-    "build:css": "npm-run-all compile:sass prefix:sass compress:sass"
+    "build:css": "npm-run-all compile:sass prefix:sass compress:sass",
+
+    "watch_lab1:sass": "node-sass ./sass/lab1.scss ./css/style1.css -w",
+    "lab1": "npm-run-all --parallel devserver watch_lab1:sass"
   },
   "description": "",
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "concat": "^1.0.3",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.3.1"
   }
