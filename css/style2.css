@@ -206,16 +206,24 @@
   .certificate___d {
     display: block;
     width: 636px;
-    height: 250px;
+    height: 200px;
     z-index: 10;
     position: absolute;
-    top: 492px;
+    top: 630px;
     left: 79px; }
   .certificate___e {
     display: block;
     width: 636px;
-    height: 250px;
+    height: 200px;
     z-index: 10;
     position: absolute;
-    top: 758px;
+    top: 833px;
     left: 79px; }
+  .certificate___f {
+    display: block;
+    width: 150px;
+    height: 150px;
+    z-index: 10;
+    position: absolute;
+    top: 470px;
+    left: 107px; }

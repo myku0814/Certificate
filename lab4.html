@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
-    <title>Yutech | Lab-1</title>
+    <title>Yutech | Lab4 and Lab5</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./lib/materialize/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="./css/style1.css"/>
+    <link type="text/css" rel="stylesheet" href="./css/style4.css"/>
 
     <style>
         body {
@@ -96,7 +96,7 @@
     <main class="container" id="main">
         <div id="form" class="row">
             <div class="col s12 center-align teal-text text-darken-4">
-                <h4>試穿戴實驗課程(一)證書</h4>
+                <h4>試穿戴實驗課程(四)、(五)證書</h4>
             </div>
             <form class="card-panel col s12" id="genCert">
                 <div class="row">
@@ -122,9 +122,9 @@
                         </div>
                     </div>
                     
-                    <div class="file-field input-field col s12 m6">
+                    <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>心電圖</span>
+                            <span>降取樣後的眼電訊號</span>
                             <input type="file" required id="_d">
                         </div>
                         <div class="file-path-wrapper">
@@ -133,9 +133,9 @@
                         </div>
                     </div>
 
-                    <div class="file-field input-field col s12 m6">
+                    <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>心律變異率</span>
+                            <span>PPG訊號與波峰偵測結果</span>
                             <input type="file" required id="_e">
                         </div>
                         <div class="file-path-wrapper">
@@ -148,51 +148,38 @@
                         <thead>
                             <tr>
                                 <th>紀錄指標</th>
-                                <th>課前5分鐘</th>
-                                <th>課後5分鐘</th>
+                                <th>ECG波峰位置</th>
+                                <th>PPG波峰位置</th>
+                                <th>PAT時間(ms)</th>
                             </tr>
                         </thead>
                 
                         <tbody>
                             <tr>
-                                <td>心跳速率</td>
+                                <td>第一筆資料</td>
                                 <td><input placeholder="xxx" id="a" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="b" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>Total Power(TP)</td>
                                 <td><input placeholder="xxx" id="c" type="text" class="validate" required></td>
-                                <td><input placeholder="xxx" id="d" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Very Low Power(VLP)</td>
+                                <td>第二筆資料</td>
+                                <td><input placeholder="xxx" id="d" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="e" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="f" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Low Power(LP)</td>
+                                <td>第三筆資料</td>
                                 <td><input placeholder="xxx" id="g" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="h" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>High Power(HP)</td>
                                 <td><input placeholder="xxx" id="i" type="text" class="validate" required></td>
-                                <td><input placeholder="xxx" id="j" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Normalized Low Power(nLP)</td>
-                                <td><input placeholder="xxx" id="k" type="text" class="validate" required></td>
-                                <td><input placeholder="xxx" id="l" type="text" class="validate" required></td>
+                                <td>所有PAT平均(ms)</td>
+                                <td colspan=3><input placeholder="xxx" id="j" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Normalized High Power(nHP)</td>
-                                <td><input placeholder="xxx" id="m" type="text" class="validate" required></td>
-                                <td><input placeholder="xxx" id="n" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>Low High Power Ratio(LHR)</td>
-                                <td><input placeholder="xxx" id="o" type="text" class="validate" required></td>
-                                <td><input placeholder="xxx" id="p" type="text" class="validate" required></td>
+                                <td>血壓估算值(收縮壓, mm/Hg)</td>
+                                <td colspan=3><input placeholder="xxx" id="k" type="text" class="validate" required></td>
                             </tr>
                         </tbody>
                     </table>
@@ -298,6 +285,21 @@
                     self.refreshCertificate();
                 };
             }
+            createElementByInner(str) {
+                const div = document.createElement('div');
+                div.innerHTML = str;
+                const container = document.createDocumentFragment();
+                div.childNodes.forEach(childNode => {
+                    const node = childNode.cloneNode(true);
+                    container.appendChild(node);
+                });
+                return container.childNodes;
+            }
+            removeElementRecursive(node) {
+                while (node.firstElementChild) { 
+                    node.firstElementChild.remove();             
+                }
+            }
             createListener() {
                 const self = this;
 
@@ -402,25 +404,60 @@
                     _e.src = self._e;
                     certificate2.appendChild(_e);
 
-
-
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--a'], `${self.a}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--b'], `${self.b}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--c'], `${self.c}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--d'], `${self.d}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--e'], `${self.e}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--f'], `${self.f}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--g'], `${self.g}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--h'], `${self.h}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--i'], `${self.i}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--j'], `${self.j}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--k'], `${self.k}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--l'], `${self.l}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--m'], `${self.m}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--n'], `${self.n}`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--o'], `${self.o}/`));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__table--p'], `${self.p}`));
                     
+
+                    const table = self.createElementByInner(`
+                        <table class="certificate__table">
+                            <thead>
+                                <tr>
+                                    <th>紀錄指標</th>
+                                    <th>ECG波峰位置</th>
+                                    <th>PPG波峰位置</th>
+                                    <th>PAT時間(ms)</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                                <tr>
+                                    <td>第一筆資料</td>
+                                    <td class="certificate__table--a">${self.a}</td>
+                                    <td class="certificate__table--b">${self.b}</td>
+                                    <td class="certificate__table--c">${self.c}</td>
+                                </tr>
+                                <tr>
+                                    <td>第二筆資料</td>
+                                    <td class="certificate__table--d">${self.d}</td>
+                                    <td class="certificate__table--e">${self.e}</td>
+                                    <td class="certificate__table--f">${self.f}</td>
+                                </tr>
+                                <tr>
+                                    <td>第三筆資料</td>
+                                    <td class="certificate__table--g">${self.g}</td>
+                                    <td class="certificate__table--h">${self.h}</td>
+                                    <td class="certificate__table--i">${self.i}</td>
+                                </tr>
+                                <tr>
+                                    <td>所有PAT平均(ms)</td>
+                                    <td colspan=3 class="certificate__table--j">${self.j}</td>
+                                </tr>
+                                <tr>
+                                    <td>血壓估算值(收縮壓, mm/Hg)</td>
+                                    <td colspan=3 class="certificate__table--k">${self.k}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        
+
+
+
+
+
+
+
+                    `);
+
+                    certificate2.append(...table);
 
                     // const node = document.getElementById('table').cloneNode(true);
                     // certificate2.appendChild(node);

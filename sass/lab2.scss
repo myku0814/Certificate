@@ -269,23 +269,34 @@ $A4-height: 1123px;
     &___d {
         display: block;
         width: 636px;
-        height: 250px;
+        height: 200px;
 
         z-index: 10;
         position: absolute;
-        top: 492px;
+        top: 630px;
         left: 79px;
     }
 
     &___e {
         display: block;
         width: 636px;
-        height: 250px;
+        height: 200px;
 
         z-index: 10;
         position: absolute;
-        top: 758px;
+        top: 833px;
         left: 79px;
+    }
+
+    &___f {
+        display: block;
+        width: 150px;
+        height: 150px;
+
+        z-index: 10;
+        position: absolute;
+        top: 470px;
+        left: 107px;
     }
 }
 

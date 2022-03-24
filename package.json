@@ -14,7 +14,16 @@
     "build:css": "npm-run-all compile:sass prefix:sass compress:sass",
 
     "watch_lab1:sass": "node-sass ./sass/lab1.scss ./css/style1.css -w",
-    "lab1": "npm-run-all --parallel devserver watch_lab1:sass"
+    "lab1": "npm-run-all --parallel devserver watch_lab1:sass",
+
+    "watch_lab2:sass": "node-sass ./sass/lab2.scss ./css/style2.css -w",
+    "lab2": "npm-run-all --parallel devserver watch_lab2:sass",
+
+    "watch_lab3:sass": "node-sass ./sass/lab3.scss ./css/style3.css -w",
+    "lab3": "npm-run-all --parallel devserver watch_lab3:sass",
+
+    "watch_lab4:sass": "node-sass ./sass/lab4.scss ./css/style4.css -w",
+    "lab4": "npm-run-all --parallel devserver watch_lab4:sass"
   },
   "description": "",
   "devDependencies": {
