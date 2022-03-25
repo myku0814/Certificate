@@ -95,39 +95,21 @@ $A4-height: 1123px;
 
     &__date {
         
-        &--yy {
+        &--today1 {
             z-index: 10;
             position: absolute;
             top: 993px;
-            left: 326px;
-        }
-        &--mm {
-            z-index: 10;
-            position: absolute;
-            top: 993px;
-            left: 399px;
-        }
-        &--dd {
-            z-index: 10;
-            position: absolute;
-            top: 993px;
-            left: 451px;
+            left: 298px;
         }
 
-        &---b {
-            z-index: 10;
-            position: absolute;
-            top: 400px;
-            left: 168px; 
-        }
-
-        &--today {
+        &--today2 {
             z-index: 10;
             position: absolute;
             top: 435px;
             left: 202px; 
         }
     }
+    
 
     &__table {
         & td {

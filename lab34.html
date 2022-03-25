@@ -218,7 +218,7 @@
     </script>
 
 
-
+    <script type="text/javascript" src="./js/date.js"></script>
     <script type="text/javascript">
         /**
          * @param  {string}          tagName   tag name
@@ -281,9 +281,9 @@
                 this.refreshCertificate();
                 this.createListener();
 
-                window.onafterprint = function() {
-                    self.refreshCertificate();
-                };
+                // window.onafterprint = function() {
+                //     self.refreshCertificate();
+                // };
             }
             createElementByInner(str) {
                 const div = document.createElement('div');
@@ -380,17 +380,14 @@
                     certificate1.appendChild(simpleCreateHTML('div', ['certificate___a--1'], self._a));
 
 
-                    const today = simpleCreateHTML('div', ['certificate__date']);
-                    today.appendChild(simpleCreateHTML('div', ['certificate__date--yy'], self.today.yy));
-                    today.appendChild(simpleCreateHTML('div', ['certificate__date--mm'], self.today.mm));
-                    today.appendChild(simpleCreateHTML('div', ['certificate__date--dd'], self.today.dd));
+                    const today = simpleCreateHTML('div', ['certificate__date--today1'], self.today.today);
                     certificate1.appendChild(today);
 
                     /* page 2 */
                     const certificate2 = document.getElementById('certificate2');
                     certificate2.appendChild(simpleCreateHTML('div', ['certificate___a--2'], self._a));
                     certificate2.appendChild(simpleCreateHTML('div', ['certificate__date---b'], self._b));
-                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__date--today'], `${self.today.yy}/${self.today.mm}/${self.today.dd}`));
+                    certificate2.appendChild(simpleCreateHTML('div', ['certificate__date--today2'], `${self.today.yy}/${self.today.mm}/${self.today.dd}`));
 
                     const _c = simpleCreateHTML('img', ['certificate___c']);
                     _c.src = self._c;
@@ -535,13 +532,7 @@
 
 
 
-        Date.prototype.today = function() {
-            return {
-                yy: this.getFullYear(),
-                mm: (this.getMonth()+1 < 10)? `0${this.getMonth()+1}` : `${this.getMonth()+1}`,
-                dd: (this.getDate() < 10)? `0${this.getDate()}` : `${this.getDate()}`
-            };
-        };
+
     </script>
 </body>
 </html>

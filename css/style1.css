@@ -47,27 +47,12 @@
     position: absolute;
     top: 358px;
     left: 185px; }
-  .certificate__date--yy {
+  .certificate__date--today1 {
     z-index: 10;
     position: absolute;
     top: 993px;
-    left: 326px; }
-  .certificate__date--mm {
-    z-index: 10;
-    position: absolute;
-    top: 993px;
-    left: 399px; }
-  .certificate__date--dd {
-    z-index: 10;
-    position: absolute;
-    top: 993px;
-    left: 451px; }
-  .certificate__date---b {
-    z-index: 10;
-    position: absolute;
-    top: 400px;
-    left: 168px; }
-  .certificate__date--today {
+    left: 298px; }
+  .certificate__date--today2 {
     z-index: 10;
     position: absolute;
     top: 435px;
