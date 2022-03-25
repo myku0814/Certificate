@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
-    <title>Yutech | Lab4 and Lab5</title>
+    <title>Yutech | Lab5</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./lib/materialize/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="./css/style4.css"/>
+    <link type="text/css" rel="stylesheet" href="./css/style5.css"/>
 
     <style>
         body {
@@ -96,7 +96,7 @@
     <main class="container" id="main">
         <div id="form" class="row">
             <div class="col s12 center-align teal-text text-darken-4">
-                <h4>試穿戴實驗課程(四)、(五)證書</h4>
+                <h5>試穿戴實驗課程(五)證書</h5>
             </div>
             <form class="card-panel col s12" id="genCert">
                 <div class="row">
@@ -124,7 +124,7 @@
                     
                     <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>降取樣後的眼電訊號</span>
+                            <span>正常心電訊號</span>
                             <input type="file" required id="_d">
                         </div>
                         <div class="file-path-wrapper">
@@ -135,7 +135,7 @@
 
                     <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>PPG訊號與波峰偵測結果</span>
+                            <span>心律不整心電訊號</span>
                             <input type="file" required id="_e">
                         </div>
                         <div class="file-path-wrapper">
@@ -144,42 +144,69 @@
                         </div>
                     </div>
 
+                    <div class="file-field input-field col s12">
+                        <div class="btn">
+                            <span>model訓練情況圖</span>
+                            <input type="file"  required id="_f">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="上傳一個檔案">
+                            <img id="_f_pic">
+                        </div>
+                    </div>
+
                     <table class="highlight" id="table">
                         <thead>
                             <tr>
-                                <th>紀錄指標</th>
-                                <th>ECG波峰位置</th>
-                                <th>PPG波峰位置</th>
-                                <th>PAT時間(ms)</th>
+                                <th>Layer</th>
+                                <th>Output shape</th>
                             </tr>
                         </thead>
                 
                         <tbody>
                             <tr>
-                                <td>第一筆資料</td>
+                                <td>conv1d</td>
                                 <td><input placeholder="xxx" id="a" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>leaky_re_lu</td>
                                 <td><input placeholder="xxx" id="b" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>conv1d_1</td>
                                 <td><input placeholder="xxx" id="c" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>第二筆資料</td>
+                                <td>leaky_re_lu_1</td>
                                 <td><input placeholder="xxx" id="d" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>max_pooling1d</td>
                                 <td><input placeholder="xxx" id="e" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>dropout</td>
                                 <td><input placeholder="xxx" id="f" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>第三筆資料</td>
+                                <td>conv1d_2</td>
                                 <td><input placeholder="xxx" id="g" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>leaky_re_lu_2</td>
                                 <td><input placeholder="xxx" id="h" type="text" class="validate" required></td>
+                            </tr>
+                            <tr>
+                                <td>global_average_pooling1d</td>
                                 <td><input placeholder="xxx" id="i" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>所有PAT平均(ms)</td>
-                                <td colspan=3><input placeholder="xxx" id="j" type="text" class="validate" required></td>
+                                <td>dropout_1</td>
+                                <td><input placeholder="xxx" id="j" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>血壓估算值(收縮壓, mm/Hg)</td>
-                                <td colspan=3><input placeholder="xxx" id="k" type="text" class="validate" required></td>
+                                <td>dense</td>
+                                <td><input placeholder="xxx" id="k" type="text" class="validate" required></td>
                             </tr>
                         </tbody>
                     </table>
@@ -254,6 +281,7 @@
                 this._c = null; // file
                 this._d = null; // file 
                 this._e = null; // file
+                this._f = null;
 
                 // table
                 this.a = '';
@@ -336,7 +364,8 @@
                             if(
                                 this.id === '_c'   ||
                                 this.id === '_d'   ||
-                                this.id === '_e'
+                                this.id === '_e'   || 
+                                this.id === '_f'
                             ) {
                                 self.refreshCertificate() // avoid intent print
                                 self[this.id] = URL.createObjectURL(this.files[0]);
@@ -404,54 +433,70 @@
                     _e.src = self._e;
                     certificate2.appendChild(_e);
 
+                    const _f = simpleCreateHTML('img', ['certificate___f']);
+                    _f.src = self._f;
+                    certificate2.appendChild(_f);
+
+
+                   
                     
 
                     const table = self.createElementByInner(`
                         <table class="certificate__table">
                             <thead>
                                 <tr>
-                                    <th>紀錄指標</th>
-                                    <th>ECG波峰位置</th>
-                                    <th>PPG波峰位置</th>
-                                    <th>PAT時間(ms)</th>
+                                    <th>Layer</th>
+                                    <th>Output shape</th>
                                 </tr>
                             </thead>
                     
                             <tbody>
                                 <tr>
-                                    <td>第一筆資料</td>
+                                    <td>conv1d</td>
                                     <td class="certificate__table--a">${self.a}</td>
+                                </tr>
+                                <tr>
+                                    <td>leaky_re_lu</td>
                                     <td class="certificate__table--b">${self.b}</td>
+                                </tr>
+                                <tr>
+                                    <td>conv1d_1</td>
                                     <td class="certificate__table--c">${self.c}</td>
                                 </tr>
                                 <tr>
-                                    <td>第二筆資料</td>
+                                    <td>leaky_re_lu_1</td>
                                     <td class="certificate__table--d">${self.d}</td>
+                                </tr>
+                                <tr>
+                                    <td>max_pooling1d</td>
                                     <td class="certificate__table--e">${self.e}</td>
+                                </tr>
+                                <tr>
+                                    <td>dropout</td>
                                     <td class="certificate__table--f">${self.f}</td>
                                 </tr>
                                 <tr>
-                                    <td>第三筆資料</td>
+                                    <td>conv1d_2</td>
                                     <td class="certificate__table--g">${self.g}</td>
+                                </tr>
+                                <tr>
+                                    <td>leaky_re_lu_2</td>
                                     <td class="certificate__table--h">${self.h}</td>
+                                </tr>
+                                <tr>
+                                    <td>global_average_pooling1d</td>
                                     <td class="certificate__table--i">${self.i}</td>
                                 </tr>
                                 <tr>
-                                    <td>所有PAT平均(ms)</td>
-                                    <td colspan=3 class="certificate__table--j">${self.j}</td>
+                                    <td>dropout_1</td>
+                                    <td class="certificate__table--j">${self.j}</td>
                                 </tr>
                                 <tr>
-                                    <td>血壓估算值(收縮壓, mm/Hg)</td>
-                                    <td colspan=3 class="certificate__table--k">${self.k}</td>
+                                    <td>dense</td>
+                                    <td class="certificate__table--k">${self.k}</td>
                                 </tr>
                             </tbody>
                         </table>
-
-                        
-
-
-
-
 
 
 
@@ -480,16 +525,14 @@
                     certificate.id = `certificate${page}`;
             
                     const certificateImageBg = simpleCreateHTML('img', ['certificate__image--bg', 'browser-default']);
-                    certificateImageBg.src=`./img/pg${page}.jpg`;
+                    certificateImageBg.src=`./img/pg${page}${(page===1)? '_lab5' : ''}.jpg`;
                     certificateImageBg.alt=`Certificate${page}`;
             
                     certificate.appendChild(certificateImageBg);
                     return certificate; // aware of return certificate.appendChild(certificateImageBg); will error
                 });
-                
-
-            
             }
+
             refreshCertificate() {
                 const secondNode = document.getElementById('second');
                 secondNode.innerHTML = '';

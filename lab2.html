@@ -96,7 +96,7 @@
     <main class="container" id="main">
         <div id="form" class="row">
             <div class="col s12 center-align teal-text text-darken-4">
-                <h4>試穿戴實驗課程(二)證書</h4>
+                <h5>試穿戴實驗課程(二)證書</h5>
             </div>
             <form class="card-panel col s12" id="genCert">
                 <div class="row">
@@ -124,7 +124,7 @@
                     
                     <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>正常心電訊號</span>
+                            <span>IEMG+MA處理後的肌電訊號</span>
                             <input type="file" required id="_d">
                         </div>
                         <div class="file-path-wrapper">
@@ -135,7 +135,7 @@
 
                     <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>心律不整心電訊號</span>
+                            <span>肌電訊號的MF與MPF的變化</span>
                             <input type="file" required id="_e">
                         </div>
                         <div class="file-path-wrapper">
@@ -144,68 +144,37 @@
                         </div>
                     </div>
 
-                    <div class="file-field input-field col s12">
-                        <div class="btn">
-                            <span>model訓練情況圖</span>
-                            <input type="file"  required id="_f">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="上傳一個檔案">
-                            <img id="_f_pic">
-                        </div>
-                    </div>
-
                     <table class="highlight" id="table">
                         <thead>
                             <tr>
-                                <th>Layer</th>
-                                <th>Output shape</th>
+                                <th>紀錄指標</th>
+                                <th>數值</th>
                             </tr>
                         </thead>
                 
                         <tbody>
                             <tr>
-                                <td>conv1d</td>
+                                <td>整段肌電的MF</td>
                                 <td><input placeholder="xxx" id="a" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>leaky_re_lu</td>
-                                <td><input placeholder="xxx" id="b" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>conv1d_1</td>
+                                <td>整段肌電的MPF</td>
                                 <td><input placeholder="xxx" id="c" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>leaky_re_lu_1</td>
-                                <td><input placeholder="xxx" id="d" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>max_pooling1d</td>
+                                <td>片段肌電的最大MF</td>
                                 <td><input placeholder="xxx" id="e" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>dropout</td>
-                                <td><input placeholder="xxx" id="f" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>conv1d_2</td>
+                                <td>片段肌電的最小MF</td>
                                 <td><input placeholder="xxx" id="g" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>leaky_re_lu_2</td>
-                                <td><input placeholder="xxx" id="h" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>global_average_pooling1d</td>
+                                <td>片段肌電的最大MPF</td>
                                 <td><input placeholder="xxx" id="i" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>dropout_1</td>
-                                <td><input placeholder="xxx" id="j" type="text" class="validate" required></td>
-                            </tr>
-                            <tr>
-                                <td>dense</td>
+                                <td>片段肌電的最小MPF</td>
                                 <td><input placeholder="xxx" id="k" type="text" class="validate" required></td>
                             </tr>
                         </tbody>
@@ -281,7 +250,6 @@
                 this._c = null; // file
                 this._d = null; // file 
                 this._e = null; // file
-                this._f = null;
 
                 // table
                 this.a = '';
@@ -364,8 +332,7 @@
                             if(
                                 this.id === '_c'   ||
                                 this.id === '_d'   ||
-                                this.id === '_e'   || 
-                                this.id === '_f'
+                                this.id === '_e'
                             ) {
                                 self.refreshCertificate() // avoid intent print
                                 self[this.id] = URL.createObjectURL(this.files[0]);
@@ -433,66 +400,43 @@
                     _e.src = self._e;
                     certificate2.appendChild(_e);
 
-                    const _f = simpleCreateHTML('img', ['certificate___f']);
-                    _f.src = self._f;
-                    certificate2.appendChild(_f);
 
 
-                   
+                    
                     
 
                     const table = self.createElementByInner(`
                         <table class="certificate__table">
                             <thead>
                                 <tr>
-                                    <th>Layer</th>
-                                    <th>Output shape</th>
+                                    <th>紀錄指標</th>
+                                    <th>數值</th>
                                 </tr>
                             </thead>
                     
                             <tbody>
                                 <tr>
-                                    <td>conv1d</td>
+                                    <td>整段肌電的MF</td>
                                     <td class="certificate__table--a">${self.a}</td>
                                 </tr>
                                 <tr>
-                                    <td>leaky_re_lu</td>
-                                    <td class="certificate__table--b">${self.b}</td>
-                                </tr>
-                                <tr>
-                                    <td>conv1d_1</td>
+                                    <td>整段肌電的MPF</td>
                                     <td class="certificate__table--c">${self.c}</td>
                                 </tr>
                                 <tr>
-                                    <td>leaky_re_lu_1</td>
-                                    <td class="certificate__table--d">${self.d}</td>
-                                </tr>
-                                <tr>
-                                    <td>max_pooling1d</td>
+                                    <td>片段肌電的最大MF</td>
                                     <td class="certificate__table--e">${self.e}</td>
                                 </tr>
                                 <tr>
-                                    <td>dropout</td>
-                                    <td class="certificate__table--f">${self.f}</td>
-                                </tr>
-                                <tr>
-                                    <td>conv1d_2</td>
+                                    <td>片段肌電的最小MF</td>
                                     <td class="certificate__table--g">${self.g}</td>
                                 </tr>
                                 <tr>
-                                    <td>leaky_re_lu_2</td>
-                                    <td class="certificate__table--h">${self.h}</td>
-                                </tr>
-                                <tr>
-                                    <td>global_average_pooling1d</td>
+                                    <td>片段肌電的最大MPF</td>
                                     <td class="certificate__table--i">${self.i}</td>
                                 </tr>
                                 <tr>
-                                    <td>dropout_1</td>
-                                    <td class="certificate__table--j">${self.j}</td>
-                                </tr>
-                                <tr>
-                                    <td>dense</td>
+                                    <td>片段肌電的最小MPF</td>
                                     <td class="certificate__table--k">${self.k}</td>
                                 </tr>
                             </tbody>
@@ -504,8 +448,7 @@
 
                     certificate2.append(...table);
 
-                    // const node = document.getElementById('table').cloneNode(true);
-                    // certificate2.appendChild(node);
+                    
 
                     if(self._ === 'yutech') {
                         self.dirty.destroy();
@@ -525,7 +468,7 @@
                     certificate.id = `certificate${page}`;
             
                     const certificateImageBg = simpleCreateHTML('img', ['certificate__image--bg', 'browser-default']);
-                    certificateImageBg.src=`./img/pg${page}.jpg`;
+                    certificateImageBg.src=`./img/pg${page}${(page===1)? '_lab2' : ''}.jpg`;
                     certificateImageBg.alt=`Certificate${page}`;
             
                     certificate.appendChild(certificateImageBg);

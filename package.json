@@ -19,11 +19,11 @@
     "watch_lab2:sass": "node-sass ./sass/lab2.scss ./css/style2.css -w",
     "lab2": "npm-run-all --parallel devserver watch_lab2:sass",
 
-    "watch_lab3:sass": "node-sass ./sass/lab3.scss ./css/style3.css -w",
-    "lab3": "npm-run-all --parallel devserver watch_lab3:sass",
+    "watch_lab34:sass": "node-sass ./sass/lab34.scss ./css/style34.css -w",
+    "lab34": "npm-run-all --parallel devserver watch_lab34:sass",
 
-    "watch_lab4:sass": "node-sass ./sass/lab4.scss ./css/style4.css -w",
-    "lab4": "npm-run-all --parallel devserver watch_lab4:sass"
+    "watch_lab5:sass": "node-sass ./sass/lab5.scss ./css/style5.css -w",
+    "lab5": "npm-run-all --parallel devserver watch_lab5:sass"
   },
   "description": "",
   "devDependencies": {

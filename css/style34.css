@@ -75,10 +75,10 @@
   .certificate__table {
     z-index: 10;
     position: absolute;
-    top: 173px;
-    left: 420px;
-    width: 205px;
-    font-size: 13px; }
+    top: 190px;
+    left: 321px;
+    width: 408px;
+    font-size: 10px; }
     .certificate__table td {
       padding: 12px !important; }
   .certificate___c {
