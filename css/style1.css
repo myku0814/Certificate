@@ -57,6 +57,11 @@
     position: absolute;
     top: 435px;
     left: 202px; }
+  .certificate__date---b {
+    z-index: 10;
+    position: absolute;
+    top: 400px;
+    left: 168px; }
   .certificate__table {
     z-index: 10;
     position: absolute;

@@ -281,9 +281,9 @@
                 this.refreshCertificate();
                 this.createListener();
 
-                // window.onafterprint = function() {
-                //     self.refreshCertificate();
-                // };
+                window.onafterprint = function() {
+                    self.refreshCertificate();
+                };
             }
             createElementByInner(str) {
                 const div = document.createElement('div');
