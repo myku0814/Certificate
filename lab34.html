@@ -150,7 +150,7 @@
                                 <th>紀錄指標</th>
                                 <th>ECG波峰位置</th>
                                 <th>PPG波峰位置</th>
-                                <th>PAT時間(ms)</th>
+                                <th>PAT時間 (ms)</th>
                             </tr>
                         </thead>
                 
@@ -174,11 +174,11 @@
                                 <td><input placeholder="xxx" id="i" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>所有PAT平均(ms)</td>
+                                <td>所有PAT平均 (ms)</td>
                                 <td colspan=3><input placeholder="xxx" id="j" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>血壓估算值(收縮壓, mm/Hg)</td>
+                                <td>血壓估算值 (收縮壓, mm/Hg)</td>
                                 <td colspan=3><input placeholder="xxx" id="k" type="text" class="validate" required></td>
                             </tr>
                         </tbody>
@@ -206,7 +206,7 @@
     </div>
 
     <footer class="page-footer teal darken-1">
-        <span class="center-align">&copy; Copyright 2022 Yutech Corp. by myku. All right reserved.</span>
+        <span class="center-align">&copy; Copyright 2022 Yutech Corp. All right reserved.</span>
     </footer>
 
     <!--JavaScript at end of body for optimized loading-->
@@ -410,7 +410,7 @@
                                     <th>紀錄指標</th>
                                     <th>ECG波峰位置</th>
                                     <th>PPG波峰位置</th>
-                                    <th>PAT時間(ms)</th>
+                                    <th>PAT時間 (ms)</th>
                                 </tr>
                             </thead>
                     
@@ -434,11 +434,11 @@
                                     <td class="certificate__table--i">${self.i}</td>
                                 </tr>
                                 <tr>
-                                    <td>所有PAT平均(ms)</td>
+                                    <td>所有PAT平均 (ms)</td>
                                     <td colspan=3 class="certificate__table--j">${self.j}</td>
                                 </tr>
                                 <tr>
-                                    <td>血壓估算值(收縮壓, mm/Hg)</td>
+                                    <td>血壓估算值 (收縮壓, mm/Hg)</td>
                                     <td colspan=3 class="certificate__table--k">${self.k}</td>
                                 </tr>
                             </tbody>
@@ -461,10 +461,10 @@
 
                     if(self._ === 'yutechEOGPPG3') {
                         self.dirty.destroy();
-                        window.print();
+                        ensureImagesLoadedAndPrint();
                     } else {
                         self.refreshCertificate();
-                        alert('密碼錯誤!!!');
+                        alert('證書金鑰錯誤!');
                     }
                     
                 });
@@ -510,29 +510,27 @@
             document.getElementById('second'), 
         );
 
+        const ensureImagesLoadedAndPrint = () => {
+            // 抓取畫面上所有的圖片
+            const allImgs = Array.from(document.querySelectorAll('img'));
+            
+            const promises = allImgs.map(img => {
+                // 如果圖片已經載入完成 (complete 為 true)，直接回傳已完成的 Promise
+                if (img.complete) return Promise.resolve();
 
+                // 否則，建立一個監聽器等待載入完成
+                return new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // 失敗也繼續，避免卡死列印
+                });
+            });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            // 等所有圖片都 Ready 後觸發列印
+            Promise.all(promises).then(() => {
+                // 額外給 200ms 讓瀏覽器完成最後的渲染（渲染 PNG 背景有時需要時間）
+                setTimeout(() => window.print(), 200);
+            });
+        };
     </script>
 </body>
 </html>

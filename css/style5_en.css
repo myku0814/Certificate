@@ -1,0 +1,106 @@
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important; } }
+
+@page {
+  size: A4 portrait; }
+
+@media print {
+  .main {
+    display: none; } }
+
+.second {
+  display: none; }
+  @media print {
+    .second {
+      display: block; } }
+
+.certificate {
+  break-inside: avoid;
+  width: 794px;
+  height: 1123px;
+  position: relative;
+  display: block;
+  color: black;
+  font-weight: 700;
+  font-family: 'DFKai-sb';
+  font-size: 22px; }
+  .certificate__image--bg {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    @media print {
+      .certificate__image--bg {
+        display: inline-block; } }
+  .certificate___a--1 {
+    font-size: 50px;
+    z-index: 10;
+    position: absolute;
+    top: 427px;
+    left: 300px; }
+  .certificate___a--2 {
+    z-index: 10;
+    position: absolute;
+    top: 363px;
+    left: 185px; }
+  .certificate__date--today1 {
+    z-index: 10;
+    position: absolute;
+    top: 993px;
+    left: 298px; }
+  .certificate__date--today2 {
+    z-index: 10;
+    position: absolute;
+    top: 436px;
+    left: 202px; }
+  .certificate__date---b {
+    z-index: 10;
+    position: absolute;
+    top: 400px;
+    left: 190px; }
+  .certificate__table {
+    z-index: 10;
+    position: absolute;
+    top: 132px;
+    left: 376px;
+    width: 320px;
+    font-size: 10px; }
+    .certificate__table td {
+      padding: 12px !important; }
+  .certificate___c {
+    display: block;
+    width: 150px;
+    border-radius: 30%;
+    z-index: 10;
+    position: absolute;
+    top: 239px;
+    left: 196px;
+    transform: translate(-50%, -50%); }
+  .certificate___d {
+    display: block;
+    width: 636px;
+    height: 200px;
+    z-index: 10;
+    position: absolute;
+    top: 630px;
+    left: 79px; }
+  .certificate___e {
+    display: block;
+    width: 636px;
+    height: 200px;
+    z-index: 10;
+    position: absolute;
+    top: 833px;
+    left: 79px; }
+  .certificate___f {
+    display: block;
+    width: 150px;
+    height: 150px;
+    z-index: 10;
+    position: absolute;
+    top: 470px;
+    left: 107px; }

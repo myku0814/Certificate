@@ -160,37 +160,37 @@
                                 <td><input placeholder="xxx" id="b" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Total Power(TP)</td>
+                                <td>Total Power (TP)</td>
                                 <td><input placeholder="xxx" id="c" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="d" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Very Low Power(VLP)</td>
+                                <td>Very Low Power (VLP)</td>
                                 <td><input placeholder="xxx" id="e" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="f" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Low Power(LP)</td>
+                                <td>Low Power (LP)</td>
                                 <td><input placeholder="xxx" id="g" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="h" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>High Power(HP)</td>
+                                <td>High Power (HP)</td>
                                 <td><input placeholder="xxx" id="i" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="j" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Normalized Low Power(nLP)</td>
+                                <td>Normalized Low Power (nLP)</td>
                                 <td><input placeholder="xxx" id="k" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="l" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Normalized High Power(nHP)</td>
+                                <td>Normalized High Power (nHP)</td>
                                 <td><input placeholder="xxx" id="m" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="n" type="text" class="validate" required></td>
                             </tr>
                             <tr>
-                                <td>Low High Power Ratio(LHR)</td>
+                                <td>Low High Power Ratio (LHR)</td>
                                 <td><input placeholder="xxx" id="o" type="text" class="validate" required></td>
                                 <td><input placeholder="xxx" id="p" type="text" class="validate" required></td>
                             </tr>
@@ -219,7 +219,7 @@
     </div>
 
     <footer class="page-footer teal darken-1">
-        <span class="center-align">&copy; Copyright 2022 Yutech Corp. by myku. All right reserved.</span>
+        <span class="center-align">&copy; Copyright 2022 Yutech Corp. All right reserved.</span>
     </footer>
 
     <!--JavaScript at end of body for optimized loading-->
@@ -506,10 +506,10 @@
 
                     if(self._ === 'yutechECG1') {
                         self.dirty.destroy();
-                        window.print();
+                        ensureImagesLoadedAndPrint();
                     } else {
                         self.refreshCertificate();
-                        alert('密碼錯誤!!!');
+                        alert('證書金鑰錯誤!');
                     }
                     
                 });
@@ -565,6 +565,27 @@
 
 
 
+        const ensureImagesLoadedAndPrint = () => {
+            // 抓取畫面上所有的圖片
+            const allImgs = Array.from(document.querySelectorAll('img'));
+            
+            const promises = allImgs.map(img => {
+                // 如果圖片已經載入完成 (complete 為 true)，直接回傳已完成的 Promise
+                if (img.complete) return Promise.resolve();
+
+                // 否則，建立一個監聽器等待載入完成
+                return new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // 失敗也繼續，避免卡死列印
+                });
+            });
+
+            // 等所有圖片都 Ready 後觸發列印
+            Promise.all(promises).then(() => {
+                // 額外給 200ms 讓瀏覽器完成最後的渲染（渲染 PNG 背景有時需要時間）
+                setTimeout(() => window.print(), 200);
+            });
+        };
 
 
 
